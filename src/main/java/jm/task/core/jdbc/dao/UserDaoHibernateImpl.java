@@ -16,7 +16,7 @@ public class UserDaoHibernateImpl implements UserDao {
         Session session = Util.getSessionFactory().openSession();
         try {
             session.beginTransaction();
-            session.createSQLQuery("CREATE TABLE IF NOT EXISTS usertable (" +
+            session.createSQLQuery("CREATE TABLE IF NOT EXISTS users (" +
                     "id bigint," +
                     "name varchar(255)," +
                     "lastname varchar(255)," +
@@ -35,7 +35,7 @@ public class UserDaoHibernateImpl implements UserDao {
         Session session = Util.getSessionFactory().openSession();
         try {
             session.beginTransaction();
-            session.createSQLQuery("DROP TABLE IF EXISTS usertable").addEntity(User.class).executeUpdate();
+            session.createSQLQuery("DROP TABLE IF EXISTS users").addEntity(User.class).executeUpdate();
             session.getTransaction().commit();
         } catch (HibernateException e) {
             session.getTransaction().rollback();
@@ -97,7 +97,7 @@ public class UserDaoHibernateImpl implements UserDao {
         Session session = Util.getSessionFactory().openSession();
         try {
             session.beginTransaction();
-            session.createSQLQuery("TRUNCATE usertable").addEntity(User.class).executeUpdate();
+            session.createSQLQuery("TRUNCATE users").addEntity(User.class).executeUpdate();
             session.getTransaction().commit();
         } catch (HibernateException e) {
             session.getTransaction().rollback();
